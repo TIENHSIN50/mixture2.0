@@ -1,0 +1,145 @@
+#include<stdio.h>//(O^2) 
+#define N 5
+int a[N];
+void insert();
+void selection();
+void Bubble();
+int main()
+{
+	int i,s;
+	
+	for(i=0;i<N;i++)
+	{
+		printf("第%d個數字 :",i+1);
+		scanf("%d", &a[i]);
+	}
+	
+	printf("\n請輸入你的選擇：\n氣泡排序法(請選1)\n選擇排序法(請選2)\n插入排序法(請選3)\n:");
+	scanf("%d",&s);
+	
+	switch(s){
+		case 1:
+			Bubble();
+			break;
+		case 2:
+			selection();
+			break;
+		default:
+			insert();
+			break;
+	}
+		
+}
+void Bubble()
+{
+	
+	int j,i,c,count=0,ex=0;
+	printf("\n\n===氣泡排序法===\n\n");
+//氣泡 
+	for(j=1;j<=N;j++)
+	{
+		for(i=0;i<N-j;i++)
+		{
+			count++;
+			if(a[i]>a[i+1])
+			{	
+				c=a[i];
+				a[i]=a[i+1];
+				a[i+1]=c;
+				ex++;
+				}
+		
+	}
+	//輸出 
+		printf("\n");
+		for(i=0;i<N;i++)
+		{
+			printf(" %d",a[i]);
+         	  
+		}
+		printf("  比較%d次  交換%d次",count,ex);
+		if(ex==0)
+			break; 
+		ex=0;
+		
+	} 	
+}
+void selection()
+{
+	int j,i,c,min,Max,count=0,ex=0;
+	//輸出
+ 	printf("\n\n===選擇排序法===\n\n");
+	for(i=0;i<N;i++)
+	{
+		printf("%d",a[i]);
+	} 
+	
+	//選擇排序法 (找最小值跟前面交換) 
+	for(i=0;i<N-1;i++)//交換編號 
+	{
+		min=i;//最小值 編號 
+		for(j=i+1;j<N;j++)
+		{
+			if(a[j]<a[min])
+			{
+				min=j;
+			}
+		
+		}
+		//a[min]和a[i]交換
+		if(min!=i)//最小值不是第一個數字才交換 
+		{
+			c=a[min];
+			a[min]=a[i];
+			a[i]=c;
+		}		
+		
+		//印出交換後的排序資料 
+		printf("\n");
+		for(j=0;j<N;j++)
+		{
+			printf(" %d",a[j]);
+		
+		}
+		
+		
+	}
+		
+	
+
+	
+ } 
+void insert()
+{
+	int min,j,i;
+	printf("\n\n===插入排序法===\n\n");
+	//插入排序法 
+	for(i=0;i<=N-1;i++)
+	{
+		min=a[i];
+		for(j=i-1;j>=0;j--)
+		{
+			
+			if(a[j]<min)
+			{
+				break;
+		    }
+			a[j+1]=a[j];
+		} 
+		a[j+1]=min;
+	
+		
+		//印出交換後的排序資料 
+		printf("\n");
+		for(j=0;j<N;j++)
+		{
+			printf(" %d",a[j]);
+		
+		}
+    } 
+	
+
+	
+	
+
+} 
